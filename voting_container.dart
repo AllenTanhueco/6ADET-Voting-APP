@@ -12,14 +12,14 @@ class VotingContainer extends StatefulWidget {
 }
 
 class _VotingContainerState extends State<VotingContainer> {
-  bool isSelected = false;
+  int voteCount = 0; 
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         setState(() {
-          isSelected = !isSelected;
+          voteCount++; 
         });
       },
       child: Container(
@@ -27,9 +27,7 @@ class _VotingContainerState extends State<VotingContainer> {
         width: 350,
         margin: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
-          color: isSelected
-              ? Colors.blueAccent.withOpacity(0.8)
-              : const Color.fromARGB(80, 255, 19, 7),
+          color: const Color.fromARGB(255, 110, 130, 165),
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Row(
@@ -45,7 +43,10 @@ class _VotingContainerState extends State<VotingContainer> {
               height: 50,
             ),
             Icon(widget.icon, color: Colors.white),
-            
+            Text(
+              '$voteCount', 
+              style: const TextStyle(fontSize: 20, color: Colors.white),
+            ),
           ],
         ),
       ),
